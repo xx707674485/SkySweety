@@ -1,16 +1,25 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
 
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
-
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath false
+            }
+        }
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -20,15 +29,41 @@ android {
         }
     }
 
+
+    dataBinding {
+        enabled = true
+    }
 }
-
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    implementation 'com.android.support:appcompat-v7:26.1.0'
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    api rootProject.ext.dependencies["support-v4"]
+    api rootProject.ext.dependencies["appcompat-v7"]
+    api rootProject.ext.dependencies["recyclerview-v7"]
+    api rootProject.ext.dependencies["cardview"]
     testImplementation 'junit:junit:4.12'
+    api 'com.android.support.constraint:constraint-layout:1.0.2'
+    //noinspection GradleCompatible
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-
+    api rootProject.ext.dependencies["glide-github"]
+    annotationProcessor rootProject.ext.dependencies["glide-compiler"]
+    api rootProject.ext.dependencies["fastjson"]
+    api rootProject.ext.dependencies["retrofit"]
+    api rootProject.ext.dependencies["retrofit-gson"]
+    api rootProject.ext.dependencies["alibaba-arouter"]
+    api rootProject.ext.dependencies["alibaba-api"]
+    annotationProcessor rootProject.ext.dependencies["alibaba-compiler"]
+    api rootProject.ext.dependencies["rxjava"]
+    api rootProject.ext.dependencies["rxandroid"]
+    api rootProject.ext.dependencies["okhttp"]
+    api rootProject.ext.dependencies["eventBus"]
+    api rootProject.ext.dependencies["nineoldandroids"]
+    api rootProject.ext.dependencies["greenDao"]
+    api rootProject.ext.dependencies["logging-interceptor"]
+    api rootProject.ext.dependencies["retrofit-adapter"]
+    api rootProject.ext.dependencies["retrofit-scalars"]
+    api rootProject.ext.dependencies["butterknife"]
+    api rootProject.ext.dependencies["butterknife-compiler"]
+    api rootProject.ext.dependencies["cardview"]
 
 }
