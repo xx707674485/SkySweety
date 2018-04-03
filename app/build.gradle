@@ -25,7 +25,7 @@ android {
             }
         }
         multiDexEnabled true
-        jackOptions.enabled = true
+//        jackOptions.enabled = true
     }
 
     compileOptions {
