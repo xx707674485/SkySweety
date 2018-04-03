@@ -1,5 +1,6 @@
 package com.xjst.skysweety.util;
 
+import android.app.Application;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -19,6 +20,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.xjst.skysweety.SkySweetyApplication;
 
 /**
  * 作者：zx on 2018/3/16 14:07
@@ -202,11 +205,11 @@ public final class ToastUtils {
     }
 
     private static void show(@StringRes final int resId, final int duration) {
-        show(Utils.getApp().getResources().getText(resId).toString(), duration);
+        show(SkySweetyApplication.getInstance().getApplicationContext().getResources().getText(resId).toString(), duration);
     }
 
     private static void show(@StringRes final int resId, final int duration, final Object... args) {
-        show(String.format(Utils.getApp().getResources().getString(resId), args), duration);
+        show(String.format(SkySweetyApplication.getInstance().getApplicationContext().getResources().getString(resId), args), duration);
     }
 
     private static void show(final String format, final int duration, final Object... args) {
@@ -218,7 +221,7 @@ public final class ToastUtils {
             @Override
             public void run() {
                 cancel();
-                sToast = Toast.makeText(Utils.getApp(), text, duration);
+                sToast = Toast.makeText(SkySweetyApplication.getInstance().getApplicationContext(), text, duration);
                 TextView tvMessage = (TextView) sToast.getView().findViewById(android.R.id.message);
                 int msgColor = tvMessage.getCurrentTextColor();
                 //it solve the font of toast
@@ -242,7 +245,7 @@ public final class ToastUtils {
             @Override
             public void run() {
                 cancel();
-                sToast = new Toast(Utils.getApp());
+                sToast = new Toast(SkySweetyApplication.getInstance().getApplicationContext());
                 sToast.setView(view);
                 sToast.setDuration(duration);
                 if (sGravity != -1 || sXOffset != -1 || sYOffset != -1) {
@@ -293,7 +296,7 @@ public final class ToastUtils {
 
     private static View getView(@LayoutRes final int layoutId) {
         LayoutInflater inflate =
-                (LayoutInflater) Utils.getApp().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                (LayoutInflater) SkySweetyApplication.getInstance().getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         return inflate != null ? inflate.inflate(layoutId, null) : null;
     }
 }

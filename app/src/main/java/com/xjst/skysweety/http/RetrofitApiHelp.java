@@ -2,8 +2,10 @@ package com.xjst.skysweety.http;
 
 import android.util.Log;
 
+import com.xjst.publiclibrary.camra.util.CheckPermission;
 import com.xjst.skysweety.Constants;
 import com.xjst.skysweety.SkySweetyApplication;
+import com.xjst.skysweety.http.service.WulianService;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,6 +26,8 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+
+import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * RetrofitFactory
@@ -121,11 +125,11 @@ public class RetrofitApiHelp {
                         .observeOn(AndroidSchedulers.mainThread());
             }
         };
-
     }
 
     /**
      * 处理不同逻辑的api分类
+     *
      * @return
      */
 
@@ -133,9 +137,11 @@ public class RetrofitApiHelp {
 //        return mRetrofitService == null ? configRetrofit(RetrofitService.class) : mRetrofitService;
 //    }
 //
-//    public WulianService getWulianService() {
-//        return mWulianService == null ? configRetrofit(WulianService.class) : mWulianService;
-//    }
+    private WulianService mWulianService;
+
+    public WulianService getWulianService() {
+        return mWulianService == null ? configRetrofit(WulianService.class) : mWulianService;
+    }
 //
 //    public VideoService getVideoService() {
 //        return mVideoService == null ? configRetrofit(VideoService.class) : mVideoService;

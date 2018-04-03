@@ -17,4 +17,20 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
+
+    <style name="ThemeTransparent" parent="android:Theme">
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- 对话框是否透明 -->
+        <item name="android:windowContentOverlay">@null</item>
+        <!-- 对话框是否有遮盖 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 对话框无标题 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 对话框是否浮动 -->
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowBackground">@color/transparent</item>
+        <!-- 背景透明 -->
+    </style>
+
+
 </resources>

@@ -93,7 +93,9 @@ public class ActivityA extends AppCompatActivity {
         }).start();
     }
 
+    public void ref() {
 
+    }
 
 
 }

@@ -30,6 +30,7 @@ public class RxBus {
     }
 
 
+
     // 提供了一个新的事件
     public void post(Object o) {
         bus.onNext(o);

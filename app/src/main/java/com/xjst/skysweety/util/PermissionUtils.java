@@ -12,6 +12,7 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.content.ContextCompat;
 
+import com.xjst.skysweety.SkySweetyApplication;
 import com.xjst.skysweety.tools.PermissionConstants;
 
 import java.util.ArrayList;
@@ -52,7 +53,7 @@ public final class PermissionUtils {
      * @return the permissions used in application
      */
     public static List<String> getPermissions() {
-        return getPermissions(Utils.getApp().getPackageName());
+        return getPermissions(SkySweetyApplication.getInstance().getApplicationContext().getPackageName());
     }
 
     /**
@@ -62,7 +63,7 @@ public final class PermissionUtils {
      * @return the permissions used in application
      */
     public static List<String> getPermissions(final String packageName) {
-        PackageManager pm = Utils.getApp().getPackageManager();
+        PackageManager pm = SkySweetyApplication.getInstance().getApplicationContext().getPackageManager();
         try {
             return Arrays.asList(
                     pm.getPackageInfo(packageName, PackageManager.GET_PERMISSIONS)
@@ -92,7 +93,7 @@ public final class PermissionUtils {
     private static boolean isGranted(final String permission) {
         return Build.VERSION.SDK_INT < Build.VERSION_CODES.M
                 || PackageManager.PERMISSION_GRANTED
-                == ContextCompat.checkSelfPermission(Utils.getApp(), permission);
+                == ContextCompat.checkSelfPermission(SkySweetyApplication.getInstance().getApplicationContext(), permission);
     }
 
     /**
@@ -100,8 +101,8 @@ public final class PermissionUtils {
      */
     public static void launchAppDetailsSettings() {
         Intent intent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-        intent.setData(Uri.parse("package:" + Utils.getApp().getPackageName()));
-        Utils.getApp().startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+        intent.setData(Uri.parse("package:" + SkySweetyApplication.getInstance().getApplicationContext().getPackageName()));
+        SkySweetyApplication.getInstance().getApplicationContext().startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
     }
 
     /**
@@ -199,7 +200,7 @@ public final class PermissionUtils {
     private void startPermissionActivity() {
         mPermissionsDenied = new ArrayList<>();
         mPermissionsDeniedForever = new ArrayList<>();
-        PermissionActivity.start(Utils.getApp());
+        PermissionActivity.start(SkySweetyApplication.getInstance().getApplicationContext());
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)

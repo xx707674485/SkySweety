@@ -2,12 +2,66 @@
 <resources>
 
     <declare-styleable name="AVLoadingIndicatorView">
-        <attr name="minWidth" format="dimension" />
+        <attr name="minWidth" format="dimension"/>
         <attr name="maxWidth" format="dimension"/>
-        <attr name="minHeight" format="dimension" />
+        <attr name="minHeight" format="dimension"/>
         <attr name="maxHeight" format="dimension"/>
         <attr name="indicatorName" format="string"/>
         <attr name="indicatorColor" format="color"/>
+    </declare-styleable>
+
+    <attr name="iconSize" format="dimension"/>
+    <attr name="iconMargin" format="dimension"/>
+    <attr name="iconSrc" format="reference"/>
+    <attr name="iconLeft" format="reference"/>
+    <attr name="iconRight" format="reference"/>
+    <attr name="duration_max" format="integer"/>
+    <declare-styleable name="JCameraView">
+        <attr name="iconSize"/>
+        <attr name="iconMargin"/>
+        <attr name="iconSrc"/>
+        <attr name="iconLeft"/>
+        <attr name="iconRight"/>
+        <attr name="duration_max"/>
+    </declare-styleable>
+
+
+    <declare-styleable name="XRefreshView">
+        <attr name="isHeightMatchParent" format="boolean"/>
+        <attr name="isWidthMatchParent" format="boolean"/>
+        <attr name="autoRefresh" format="boolean"/>
+        <attr name="autoLoadMore" format="boolean"/>
+    </declare-styleable>
+
+
+    <!--recycleViewAdapt-->
+
+    <declare-styleable name="StickyListHeadersListView">
+
+        <!-- Android attributes -->
+        <attr name="android:clipToPadding"/>
+        <attr name="android:padding"/>
+        <attr name="android:paddingLeft"/>
+        <attr name="android:paddingTop"/>
+        <attr name="android:paddingRight"/>
+        <attr name="android:paddingBottom"/>
+
+        <!-- ListView attributes -->
+        <attr name="android:fadingEdgeLength"/>
+        <attr name="android:requiresFadingEdge"/>
+        <attr name="android:cacheColorHint"/>
+        <attr name="android:choiceMode"/>
+        <attr name="android:drawSelectorOnTop"/>
+        <attr name="android:fastScrollEnabled"/>
+        <attr name="android:listSelector"/>
+        <attr name="android:scrollingCache"/>
+        <attr name="android:scrollbarStyle"/>
+        <attr name="android:divider"/>
+        <attr name="android:dividerHeight"/>
+
+        <!-- StickyListHeaders attributes -->
+        <attr name="hasStickyHeaders" format="boolean"/>
+        <attr name="isDrawingListUnderStickyHeader" format="boolean"/>
     </declare-styleable>
 
 </resources>

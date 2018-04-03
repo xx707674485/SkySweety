@@ -1,5 +1,7 @@
 package com.xjst.skysweety.test.eventbus;
 
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -17,6 +19,7 @@ public class ActivityB extends AppCompatActivity {
 
     @BindView(R.id.btn)
     Button btn;
+    private TestBoradcast mBoradcast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +36,31 @@ public class ActivityB extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mBoradcast = new TestBoradcast();
+        IntentFilter mIntentFilter = new IntentFilter();
+        mIntentFilter.addAction("com.xjst.skysweety.testreceive");
+        registerReceiver(mBoradcast, mIntentFilter);
+    }
 
-//    public void back() {
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent();
+        intent.setAction("com.xjst.skysweety.testreceive");
+        sendBroadcast(intent);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(mBoradcast);
+    }
+
+
+    //    public void back() {
 //        EventBus.getDefault().post(new Student("小花", "18", "女"));
 ////        EventBus.getDefault().post("大帅哥");
 ////        onBackPressed();

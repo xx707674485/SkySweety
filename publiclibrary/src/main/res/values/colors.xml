@@ -3,4 +3,5 @@
     <color name="color_accent">#7c4dff</color>
     <color name="color_success">#3CCD88</color>
     <color name="color_error">#f44336</color>
+    <color name="dialog_bg">#bc000000</color>
 </resources>
