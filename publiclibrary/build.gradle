@@ -65,6 +65,14 @@ dependencies {
     api rootProject.ext.dependencies["butterknife"]
     api rootProject.ext.dependencies["butterknife-compiler"]
     api rootProject.ext.dependencies["cardview"]
+    api rootProject.ext.dependencies["rxLifecycle"]
+    api rootProject.ext.dependencies["rxLifecycle-android"]
+    api rootProject.ext.dependencies["rxLifecycle-components"]
+    api rootProject.ext.dependencies["rxNavi"]
+    api rootProject.ext.dependencies["textDrawable"]
+    api rootProject.ext.dependencies["takePhoto"]
+    api rootProject.ext.dependencies["swipeLayout"]
+    api rootProject.ext.dependencies["Luban"]
 
     /**
      * nicevideoplayer
