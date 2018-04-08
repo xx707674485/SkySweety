@@ -40,6 +40,7 @@ dependencies {
     api rootProject.ext.dependencies["appcompat-v7"]
     api rootProject.ext.dependencies["recyclerview-v7"]
     api rootProject.ext.dependencies["cardview"]
+    api rootProject.ext.dependencies["design"]
     testImplementation 'junit:junit:4.12'
     api 'com.android.support.constraint:constraint-layout:1.0.2'
     //noinspection GradleCompatible
@@ -73,6 +74,8 @@ dependencies {
     api rootProject.ext.dependencies["takePhoto"]
     api rootProject.ext.dependencies["swipeLayout"]
     api rootProject.ext.dependencies["Luban"]
+    api rootProject.ext.dependencies["dexmaker"]
+//    api rootProject.ext.dependencies["cglib-nodep"]
 
     /**
      * nicevideoplayer
