@@ -1,13 +1,14 @@
 package com.xjst.skysweety.util.attacher;
 
 import android.support.annotation.Nullable;
-import android.util.Log;
+
+import com.xjst.skysweety.util.proxy.Enhancer;
+import com.xjst.skysweety.util.proxy.MethodFilter;
+import com.xjst.skysweety.util.proxy.MethodInterceptor;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
 import java.util.WeakHashMap;
 
 public class Factory {
@@ -56,23 +57,28 @@ public class Factory {
     @Nullable
     public synchronized static <T> T newInstance(Class<T> clazz) {
         if (clazz == null) return null;
-        Constructor<T> constructor;
         try {
-            constructor = clazz.getDeclaredConstructor();
-            if (constructor != null) {
-                return constructor.newInstance();
-            }
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
+            return clazz.newInstance();
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
             e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
         }
         return null;
     }
+
+    public synchronized static <T> T newInstanceProxy(Class<T> clazz, MethodFilter filter, MethodInterceptor... interceptor) {
+        Enhancer<T> enhancer = Enhancer.get(clazz);
+        enhancer.setFilter(filter);
+        enhancer.setInterceptors(interceptor);
+        return enhancer.create();
+    }
+    public synchronized static <T> T newInstanceProxy(Class<T> clazz,MethodInterceptor... interceptor) {
+        Enhancer<T> enhancer = Enhancer.get(clazz);
+        enhancer.setInterceptors(interceptor);
+        return enhancer.create();
+    }
+
 
     /**
      * 通过参数构建对象
@@ -107,7 +113,7 @@ public class Factory {
                     flag = false;
                     continue;
                 }
-                flag = flag && (type.isInstance(arg) ||checkPrimitive(type, arg));
+                flag = flag && (type.isInstance(arg) || checkPrimitive(type, arg));
             }
             if (flag) constructor = temp;
         }
@@ -129,7 +135,6 @@ public class Factory {
     }
 
 
-
     private static boolean checkPrimitive(Class<?> type, Object arg) {
         if (type == null || arg == null) return false;
         Class<?> argsType = arg.getClass();
@@ -142,6 +147,7 @@ public class Factory {
 
     /**
      * 对象构建工厂
+     *
      * @param clazz
      * @param args
      * @param <T>
@@ -154,6 +160,7 @@ public class Factory {
 
     /**
      * 对象构建工厂
+     *
      * @param clazz
      * @param isArgs
      * @param flag
