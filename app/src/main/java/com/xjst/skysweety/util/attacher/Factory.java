@@ -70,12 +70,12 @@ public class Factory {
     public synchronized static <T> T newInstanceProxy(Class<T> clazz, MethodFilter filter, MethodInterceptor... interceptor) {
         Enhancer<T> enhancer = Enhancer.get(clazz);
         enhancer.setFilter(filter);
-        enhancer.setInterceptor(interceptor);
+        enhancer.setInterceptors(interceptor);
         return enhancer.create();
     }
     public synchronized static <T> T newInstanceProxy(Class<T> clazz,MethodInterceptor... interceptor) {
         Enhancer<T> enhancer = Enhancer.get(clazz);
-        enhancer.setInterceptor(interceptor);
+        enhancer.setInterceptors(interceptor);
         return enhancer.create();
     }
 
