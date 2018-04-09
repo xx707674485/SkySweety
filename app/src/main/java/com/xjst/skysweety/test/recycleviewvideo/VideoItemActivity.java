@@ -9,6 +9,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -43,6 +44,10 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import leo.android.cglib.proxy.Enhancer;
+import leo.android.cglib.proxy.MethodInterceptor;
+import leo.android.cglib.proxy.MethodProxy;
+import leo.android.cglib.proxy.MethodProxyExecuter;
 
 import static android.widget.LinearLayout.VERTICAL;
 
@@ -51,6 +56,7 @@ import static android.widget.LinearLayout.VERTICAL;
  * 描述:
  */
 public class VideoItemActivity extends AppCompatActivity {
+    private static final String TAG = "VideoItemActivity";
     @BindView(R.id.recyclerview)
     RecyclerView recyclerview;
     @BindView(R.id.refreshLayout)
@@ -68,6 +74,9 @@ public class VideoItemActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         EventBus.getDefault().register(this);
         initView();
+        Enhancer enhancer = new Enhancer(this);
+        enhancer.setSuperclass(Student.class);
+
     }
 
     private void initView() {
