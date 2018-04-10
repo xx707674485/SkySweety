@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ActicityStackManagerAttacher extends Attacher<Application> {
-    private List<Activity> activities = new ArrayList<>();
+    private static List<Activity> activities = new ArrayList<>();
 
     private ActivityStackCallback callback = new ActivityStackCallback();
 
@@ -23,17 +23,17 @@ public class ActicityStackManagerAttacher extends Attacher<Application> {
         target.registerActivityLifecycleCallbacks(callback);
     }
 
-    public int getSize() {
+    public static int getSize() {
         return activities.size();
     }
 
-    public void finishTopActivity() {
+    public static void finishTopActivity() {
         Activity activity = getCurrentActivity();
         if (activity == null) return;
         activity.finish();
     }
 
-    public Activity findByClass(Class<? extends Activity> clazz) {
+    public static Activity findByClass(Class<? extends Activity> clazz) {
         for (Activity activity : activities) {
             if (activity == null) continue;
             if (activity.getClass().equals(clazz)) {
@@ -43,7 +43,7 @@ public class ActicityStackManagerAttacher extends Attacher<Application> {
         return null;
     }
 
-    public Activity getCurrentActivity() {
+    public static Activity getCurrentActivity() {
         return activities.get(getSize() - 1);
     }
 

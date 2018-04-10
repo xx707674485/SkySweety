@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Gradle: __local_aars__:F.\Android\SkySweety\publiclibrary\libs\cglib-for-android.jar:unspecified@jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/publiclibrary/libs/cglib-for-android.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

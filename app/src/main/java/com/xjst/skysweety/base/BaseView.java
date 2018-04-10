@@ -1,8 +1,7 @@
 package com.xjst.skysweety.base;
 
-/**
- * View基类
- */
-public interface BaseView {
-    void setPresenter();
+import com.trello.navi2.NaviComponent;
+
+public interface BaseView extends NaviComponent, UIProvider,ContextProvider {
+
 }

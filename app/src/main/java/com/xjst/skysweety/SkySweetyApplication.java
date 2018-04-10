@@ -10,6 +10,8 @@ import android.view.Display;
 import android.view.WindowManager;
 
 
+import com.xjst.skysweety.util.attacher.ActicityStackManagerAttacher;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,7 +23,7 @@ import java.util.Set;
 public class SkySweetyApplication extends Application {
 
     private static SkySweetyApplication instance;
-    private Set<Activity> allActivities;
+//    private Set<Activity> allActivities;
 
     public static int SCREEN_WIDTH = -1;
     public static int SCREEN_HEIGHT = -1;
@@ -41,7 +43,7 @@ public class SkySweetyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
-
+        ActicityStackManagerAttacher.attach(this);
         //初始化屏幕宽高
         getScreenSize();
 
@@ -55,30 +57,30 @@ public class SkySweetyApplication extends Application {
         MultiDex.install(this);
     }
 
-    public void addActivity(Activity act) {
-        if (allActivities == null) {
-            allActivities = new HashSet<>();
-        }
-        allActivities.add(act);
-    }
-
-    public void removeActivity(Activity act) {
-        if (allActivities != null) {
-            allActivities.remove(act);
-        }
-    }
-
-    public void exitApp() {
-        if (allActivities != null) {
-            synchronized (allActivities) {
-                for (Activity act : allActivities) {
-                    act.finish();
-                }
-            }
-        }
-        android.os.Process.killProcess(android.os.Process.myPid());
-        System.exit(0);
-    }
+//    public void addActivity(Activity act) {
+//        if (allActivities == null) {
+//            allActivities = new HashSet<>();
+//        }
+//        allActivities.add(act);
+//    }
+//
+//    public void removeActivity(Activity act) {
+//        if (allActivities != null) {
+//            allActivities.remove(act);
+//        }
+//    }
+//
+//    public void exitApp() {
+//        if (allActivities != null) {
+//            synchronized (allActivities) {
+//                for (Activity act : allActivities) {
+//                    act.finish();
+//                }
+//            }
+//        }
+//        android.os.Process.killProcess(android.os.Process.myPid());
+//        System.exit(0);
+//    }
 
     public void getScreenSize() {
         WindowManager windowManager = (WindowManager) this.getSystemService(Context.WINDOW_SERVICE);

@@ -1,4 +1,4 @@
 package com.xjst.skysweety.base;
 
-public interface BasePresenter {
+public interface BaseModel {
 }
