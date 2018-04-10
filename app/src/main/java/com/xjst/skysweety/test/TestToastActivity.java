@@ -1,17 +1,16 @@
 package com.xjst.skysweety.test;
 
-import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.xjst.publiclibrary.loadtoast.LoadToast;
-import com.xjst.skysweety.R;
-//import com.xjst.skysweety.databinding.ActivityMainBinding;
 import com.xjst.skysweety.util.TimeUtils;
 
 import java.util.Date;
+
+//import com.xjst.skysweety.databinding.ActivityMainBinding;
 
 /**
  * 作者：zx on 2018/3/14 18:00
