@@ -42,6 +42,7 @@
         <activity android:name=".test.eventbus.TestBoardCastActivity"/>
         <activity android:name=".test.recycleviewvideo.dto.CameraActivity"/>
         <activity android:name=".test.TestActivity" />
+        <activity android:name=".util.delegate.activity.DelegateActivity" />
     </application>
 
 </manifest>

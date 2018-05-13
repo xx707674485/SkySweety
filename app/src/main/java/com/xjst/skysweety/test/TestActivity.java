@@ -11,25 +11,22 @@ public class TestActivity extends BaseActivity {
     private static final String TAG = "TestActivity";
 
     @Override
-    public void showProgress(CharSequence msg) {
-    }
-
-    @Override
-    public void dismissProgress() {
-    }
-
-    @Override
     public BasePresenter createPresenter() {
-        Log.d(TAG, "createPresenter: enter this line");
         return null;
     }
+
     @Override
     public int getLayout() {
-        return -1;
+        return 0;
     }
 
     @Override
     public void initView() {
 
+    }
+
+    private void onTest() {
+        getDataBinding();
+        getPresenter();
     }
 }

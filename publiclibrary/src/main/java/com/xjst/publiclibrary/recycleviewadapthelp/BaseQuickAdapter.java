@@ -1017,7 +1017,7 @@ public abstract class BaseQuickAdapter<T, K extends BaseViewHolder> extends Recy
     }
 
     /**
-     * if you want to use subclass of BaseViewHolder in the adapter,
+     * if you want to use subclass of BinderViewHolder in the adapter,
      * you must override the method to create new ViewHolder.
      *
      * @param view view

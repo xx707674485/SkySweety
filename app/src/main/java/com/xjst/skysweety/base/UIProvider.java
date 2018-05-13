@@ -7,7 +7,10 @@ public interface UIProvider {
         ToastUtils.showShort(msg);
     }
 
-    void showProgress(CharSequence msg);
+    default void showProgress(CharSequence msg) {
 
-    void dismissProgress();
+    }
+
+    default void dismissProgress() {
+    }
 }
